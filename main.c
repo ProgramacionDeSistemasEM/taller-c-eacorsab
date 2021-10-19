@@ -7,7 +7,7 @@ int main(int argc, char **argv){
 	int elementos = 0;
 	char c = 0;
 	
-	
+
 	//Aqui manejamos las opciones.
 	//El argumento -p tiene un argumento, que es 
 	//el numero de elementos a pedir (por eso el :)
@@ -21,7 +21,6 @@ int main(int argc, char **argv){
 				exit(1);
 		}
 	}
-	elementos = 3;
 	if(elementos<=0){
 		printf("Numero de personas invalido");
 		exit(1);
@@ -36,30 +35,37 @@ int main(int argc, char **argv){
 	
 	
 	for(i=0;i<elementos;i++){
-		printf("\nPeso: ");
+		printf("Peso: ");
 		scanf("%f", &peso);
 		if(peso<0){
 			printf("Numero invalido");
 			exit(1);
 		}
-		printf("\nAltura: ");
+		printf("Altura: ");
 		scanf("%f", &altura);
 		if(altura<0){
 			printf("Numero invalido");
 			exit(1);
 		}
 		imc = peso/(altura * altura);
-		printf("%.1f",imc);
+		infoimc[i]=imc;
 		sum+=imc;		
 	}
+		
+	sum = sum/elementos;
 	
-	
-	
+	float valor =0.0f ;
+	for (i=0;i<elementos;i++){
+		valor = infoimc[i];
+		if (valor>max_imc){
+			max_imc=valor;
+		}	
+	}
 	
 	
 	//No modifique estas lineas
 	//Guarde los resultados en las 
 	//variables sum y max_imc
 	printf("\npromedio IMC: %.1f\n", sum);
-	//printf("maximo IMC: %.1f\n", max_imc);
+	printf("maximo IMC: %.1f\n", max_imc);
 }
